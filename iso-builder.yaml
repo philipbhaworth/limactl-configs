@@ -3,7 +3,7 @@ images:
   - location: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-arm64.img"
     arch: "aarch64"  # Changed from x86_64
 mounts:
-  - location: "~/iso-work"
+  - location: "~/repos/iso-work"
     writable: true
 ssh:
   loadDotSSHPubKeys: true

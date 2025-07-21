@@ -40,7 +40,7 @@ This repo provides reusable Lima VM configurations that:
 1. **Create a working directory** (optional, but useful):
 
 ```bash
-mkdir -p ~/iso-work  # Or whatever path your config mounts
+mkdir -p ~/repos/iso-work  # Or whatever path your config mounts
 ````
 
 2. **Start a Lima VM with one of the configs**:
@@ -97,13 +97,13 @@ In your YAML config:
 
 ```yaml
 mounts:
-  - location: "~/iso-work"
+  - location: "~/repos/iso-work"
     writable: true
 ```
 
 **Usage:**
 
-* On macOS: work inside `~/iso-work`
+* On macOS: work inside `~/repos/iso-work`
 * Inside the VM: access the same files via `/mnt/lima-0`
 
 This setup ensures changes made in either environment are synced immediately.
@@ -159,7 +159,7 @@ A Lima VM config for building ISO images. Includes tools like:
 * `whois`
 * `vim`
 
-It mounts `~/iso-work` from the host and provisions a minimal build environment.
+It mounts `~/repos/iso-work` from the host and provisions a minimal build environment.
 
 More configurations will be added here as the collection grows.
 
