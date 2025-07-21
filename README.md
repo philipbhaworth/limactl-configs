@@ -39,21 +39,21 @@ This repo provides reusable Lima VM configurations that:
 
 1. **Create a working directory** (optional, but useful):
 
-   ```bash
-   mkdir -p ~/iso-work  # Or whatever path your config mounts
+```bash
+mkdir -p ~/iso-work  # Or whatever path your config mounts
 ````
 
 2. **Start a Lima VM with one of the configs**:
 
-   ```bash
-   limactl start ~/repos/limactl-configs/iso-builder.yaml
-   ```
+```bash
+limactl start ~/repos/limactl-configs/iso-builder.yaml
+```
 
    Or name it explicitly:
 
-   ```bash
-   limactl start --name=iso-builder ~/repos/limactl-configs/iso-builder.yaml
-   ```
+```bash
+limactl start --name=iso-builder ~/repos/limactl-configs/iso-builder.yaml
+```
 
 ---
 
