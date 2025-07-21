@@ -1,0 +1,36 @@
+# ~/repos/limactl-configs/iso-builder.yaml
+images:
+  - location: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-arm64.img"
+    arch: "aarch64"  # Changed from x86_64
+mounts:
+  - location: "~/iso-work"
+    writable: true
+ssh:
+  loadDotSSHPubKeys: true
+  forwardAgent: true
+containerd:
+  system: false
+  user: false
+provision:
+  - mode: system
+    script: |
+      apt-get update
+      DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        p7zip-full \
+        xorriso \
+        whois \
+        vim
+  - mode: user
+    script: |
+      echo "ISO build environment ready. Work directory: /mnt/lima-0"
+      # Basic vim configuration
+      cat > ~/.vimrc << 'EOF'
+      set number
+      set autoindent
+      set tabstop=2
+      set shiftwidth=2
+      set expandtab
+      syntax on
+      EOF
+firmware:
+  legacyBIOS: true  # This warning is harmless on Apple Silicon
