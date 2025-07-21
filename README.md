@@ -1,14 +1,3 @@
-Here's a generalized `README.md` you can use for your `limactl-configs` repo. It includes:
-
-* An overview of the repo
-* Setup instructions
-* General Lima usage commands
-* Explanation of mounted working directories
-* A section where you can describe individual configs (like `iso-builder.yaml`)
-
----
-
-````markdown
 # Lima Configurations
 
 This repository contains a collection of [Lima](https://github.com/lima-vm/lima) (`limactl`) virtual machine configuration files. These YAML configs help you quickly spin up container-native Linux virtual machines with customized environments on macOS using Lima.
@@ -19,14 +8,19 @@ Each config defines a specific purpose — such as ISO building, development env
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Initial Setup](#initial-setup)
-- [Daily Usage](#daily-usage)
-- [Management Commands](#management-commands)
-- [Working Directory & Mounts](#working-directory--mounts)
-- [Troubleshooting](#troubleshooting)
-- [Example Workflow](#example-workflow)
-- [Config Descriptions](#config-descriptions)
+- [Lima Configurations](#lima-configurations)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Initial Setup](#initial-setup)
+  - [Daily Usage](#daily-usage)
+  - [Management Commands](#management-commands)
+  - [Working Directory \& Mounts](#working-directory--mounts)
+    - [Example](#example)
+  - [Troubleshooting](#troubleshooting)
+  - [Example Workflow](#example-workflow)
+  - [Config Descriptions](#config-descriptions)
+    - [`iso-builder.yaml`](#iso-builderyaml)
+  - [Resources](#resources)
 
 ---
 
