@@ -1,0 +1,65 @@
+# ~/repos/limactl-configs/iso-builder.yaml
+images:
+  - location: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-arm64.img"
+    arch: "aarch64"  # Changed from x86_64
+mounts:
+  - location: "~/smb_logs_20250724_085437/"
+    writable: true
+ssh:
+  loadDotSSHPubKeys: true
+  forwardAgent: true
+containerd:
+  system: false
+  user: false
+provision:
+  - mode: system
+    script: |
+      apt-get update
+      DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        tree \
+        whois \
+        vim \
+        curl \
+        ca-certificates \
+        gnupg
+      
+      # Install Node.js 18.x
+      curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+      DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
+      
+      # Verify Node.js installation
+      node --version
+      npm --version
+  - mode: user
+    script: |
+      echo "Development environment ready. Work directory: /mnt/lima-0"
+      
+      # Basic vim configuration
+      cat > ~/.vimrc << 'EOF'
+      set number
+      set autoindent
+      set tabstop=2
+      set shiftwidth=2
+      set expandtab
+      syntax on
+      EOF
+      
+      # Configure npm global directory to avoid permission issues
+      mkdir -p ~/.npm-global
+      npm config set prefix '~/.npm-global'
+      
+      # Add npm global bin to PATH in bashrc
+      echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+      
+      # Install Claude Code globally
+      export PATH=~/.npm-global/bin:$PATH
+      npm install -g @anthropic-ai/claude-code
+      
+      # Verify installation
+      which claude || echo "Claude installation check failed"
+      
+      echo "Claude Code installed successfully!"
+      echo "Run 'claude' to start Claude Code after VM startup"
+      echo "Note: First run will prompt for authentication"
+firmware:
+  legacyBIOS: true  # This warning is harmless on Apple Silicon
